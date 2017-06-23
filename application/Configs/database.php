@@ -2,6 +2,6 @@
 
 return [
     'localhost' => [
-        'host' => 'localhost', 'name' => 'memo', 'user' => 'root', 'password' => ''
+        'host' => 'localhost', 'name' => 'memo', 'user' => 'cosmos', 'password' => 'cosmos2017'
     ]
 ];

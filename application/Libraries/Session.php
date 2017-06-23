@@ -2,6 +2,8 @@
 
 namespace App\Libraries;
 
+use App\Models\Session as TableSessions;
+
 class Session
 {
     /**
@@ -63,5 +65,64 @@ class Session
         } else {
             self::set($key, $value);
         }
+    }
+
+    /**
+     * 세션 저장
+     * @param  integer $id [users::id]
+     * @return boolean
+     */
+    public static function save($id = 0)
+    {
+        return TableSessions::insert([
+            'session_id' => session_id(),
+            'session_expires' => time() + (int) get_cfg_var('session.gc_maxlifetime'),
+            'user_id' => $id,
+            'user_ip' => $_SERVER['REMOTE_ADDR'],
+            'date' => date('Y-m-d H:i:s')
+        ]);
+    }
+
+    /**
+     * 세션 삭제
+     * @return bool
+     */
+    public static function checkout()
+    {
+        return TableSessions::delete(session_id());
+    }
+
+    /**
+     * 세션 중복
+     * @return bool
+     */
+    public static function overlap()
+    {
+        if (! is_null(session('id'))) {
+            $count = TableSessions::count(['user_id' => session('id'), '>|session_expires' => time()]);
+            if ((int) $count > 1) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * 세션 만료
+     * @return bool
+     */
+    public static function expiration()
+    {
+        if (! is_null(session('id'))) {
+            $params = ['user_id' => session('id'), '<|session_expires' => time()];
+
+            $count = TableSessions::count($params);
+            if ((int) $count > 0) {
+                return TableSessions::delete($params);
+            }
+        }
+
+        return false;
     }
 }

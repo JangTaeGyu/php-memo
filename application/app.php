@@ -23,5 +23,21 @@ foreach (App\Libraries\Loader::configs('libraryAlias') as $alias => $original) {
     class_alias($original, $alias);
 }
 
+if (App\Libraries\Session::overlap()) {
+    echo view('javascript/alertAfterTarget.php', [
+        'message' => '중복 로그인 정보가 있습니다. 확인 후 다시 시도해 주세요.',
+        'target' => APP_URL . '/auth/logout'
+    ]);
+    die;
+}
+
+if (App\Libraries\Session::expiration()) {
+    echo view('javascript/alertAfterTarget.php', [
+        'message' => '로그인 정보가 만료 되었습니다. 다시 시도해 주세요.',
+        'target' => APP_URL . '/auth/login'
+    ]);
+    die;
+}
+
 // Route Setting
 include_once ROUTE_PATH . '/index.php';

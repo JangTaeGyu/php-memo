@@ -15,6 +15,7 @@
             "application/Helpers/Connection.php",
             "application/Helpers/Request.php",
             "application/Helpers/Response.php",
+            "application/Helpers/Session.php",
             "application/Helpers/Token.php"
         ]
     }

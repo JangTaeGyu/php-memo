@@ -13,7 +13,8 @@
         },
         "files": [
             "application/Helpers/Request.php",
-            "application/Helpers/Response.php"
+            "application/Helpers/Response.php",
+            "application/Helpers/Token.php"
         ]
     }
 }

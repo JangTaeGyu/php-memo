@@ -3,6 +3,8 @@
 <div class="content">
 
     <form class="form" method="POST" action="/join/signup/process">
+        <input type="hidden" name="_token" value="<?= token() ?>" />
+
         <h1 class="form_title">가입하기</h1>
         <div class="form_group">
             <label>이름</label>

@@ -52,8 +52,13 @@ class Route
 
                 if (method_exists($object, $call)) {
                     if ($auth) {
-
-                        die;
+                        if (! isLogin()) {
+                            echo view('javascript/alertAfterTarget.php', [
+                                'message' => '로그인 후 접근이 가능 합니다.',
+                                'target' => '/auth/login'
+                            ]);
+                            die;
+                        }
                     }
 
                     echo call_user_func([$object, $call]);

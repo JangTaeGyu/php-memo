@@ -89,6 +89,14 @@ a {
     padding: 15px;
 }
 
+.form_memo {
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.09) 0 1px 0;
+    width: 700px;
+    margin: 30px auto;
+    padding: 15px;
+}
+
 .form_title {
     margin: 0 0 15px 0;
 }
@@ -160,6 +168,12 @@ a {
     cursor: not-allowed;
 }
 
+.btn_default {
+    background: #ebeef3;
+    color: #333;
+    box-shadow: 0 1px #ccc;
+}
+
 .btn_primary {
     background: #337ab7;
     color: #fff;
@@ -192,6 +206,7 @@ a {
 }
 
 .memo_inner {
+    border-radius: 5px;
     display: block;
     box-shadow: rgba(0, 0, 0, 0.09) 0 1px 0;
     background: #fff;

@@ -12,6 +12,7 @@
             "App\\": "application"
         },
         "files": [
+            "application/Helpers/Common.php",
             "application/Helpers/Connection.php",
             "application/Helpers/Request.php",
             "application/Helpers/Response.php",

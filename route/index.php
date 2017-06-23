@@ -3,7 +3,8 @@
 $app = new \Route;
 
 $app->get('/', 'MemoController@index');
-$app->get('/memo/create', 'MemoController@create');
+$app->get('/memo/create', ['uses' => 'MemoController@create', 'auth' => true]);
+$app->post('/memo/store', ['uses' => 'MemoController@store', 'auth' => true]);
 $app->get('/memo/view', 'MemoController@view');
 
 $app->get('/auth/login', 'AuthController@login');

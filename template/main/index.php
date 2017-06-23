@@ -1,7 +1,26 @@
 <?php echo view('layout/top.php', ['title' => '메인']); ?>
 
 <div class="content">
-    <p>PHP MVC 패턴의 메모장 웹 어플리케이션 만들기 메인 페이지</p>
+
+    <div class="memo_list">
+
+    <?php for ($i = 0; $i < 10; $i++): ?>
+
+        <div class="memo_item">
+            <a href="javascript:void(0)" class="memo_inner">
+                <p class="memo_contents">
+                    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+                    cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+                    dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+                </p>
+                <p class="memo_writer">작성자 : 장태규</p>
+            </a>
+        </div>
+
+    <?php endfor; ?>
+
+    </div>
 </div>
 
 <?php echo view('layout/bottom.php'); ?>

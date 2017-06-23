@@ -4,4 +4,11 @@ $app = new \Route;
 
 $app->get('/', 'MainController@index');
 
+$app->get('/auth/login', 'AuthController@login');
+$app->post('/auth/login/process', 'AuthController@loginProcess');
+$app->get('/auth/logout', 'AuthController@logout');
+
+$app->get('/join/signup', 'JoinController@signup');
+$app->post('/join/signup/process', 'JoinController@signupProcess');
+
 $app->run();

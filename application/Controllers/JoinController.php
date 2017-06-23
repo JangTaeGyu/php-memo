@@ -11,5 +11,8 @@ class JoinController extends Controller
 
     public function signupProcess()
     {
+        $request = request('POST', [
+            'name' => '', 'email' => '', 'password' => '', 'password_confirmation' => ''
+        ], true);
     }
 }

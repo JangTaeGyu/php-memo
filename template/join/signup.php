@@ -6,11 +6,11 @@
         <h1 class="form_title">가입하기</h1>
         <div class="form_group">
             <label>이름</label>
-            <input type="text" class="form_control" name="name" value="">
+            <input type="text" class="form_control" name="name" value="<?= old('name') ?>">
         </div>
         <div class="form_group">
             <label>이메일</label>
-            <input type="text" class="form_control" name="email" value="">
+            <input type="text" class="form_control" name="email" value="<?= old('email') ?>">
         </div>
         <div class="form_group">
             <label>비밀번호</label>

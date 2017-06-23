@@ -10,7 +10,7 @@ class Hash
     {
         return password_hash($string, PASSWORD_DEFAULT, [
             'cost' => self::COST,
-            'salt' => $salt,
+            'salt' => self::salt(32),
         ]);
     }
 

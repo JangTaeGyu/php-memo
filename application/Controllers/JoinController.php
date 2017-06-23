@@ -32,22 +32,17 @@ class JoinController extends Controller
                 throw new \Exception($validation['messages'][0]);
             }
 
-            // 회원 중복 체크
             $count = User::count(['email' => $request['email']]);
             if ((int) $count > 0) {
                 throw new \Exception("중복되는 이메일이 있습니다. 다시 확인해 주세요.");
 
             }
 
-            // Hash Key 생성
-            $salt = \Hash::salt(32);
-
-            // 회원 저장
             $result = User::insert([
-                'name' => $request['name'], 'email' => $request['email'], 'password' => \Hash::make($request['password'], $salt), 'created_at' => date('Y-m-d H:i:s')
+                'name' => $request['name'], 'email' => $request['email'], 'password' => \Hash::make($request['password']), 'created_at' => date('Y-m-d H:i:s')
             ]);
             if ((int) $result === 0) {
-                throw new Exception("회원가입에 실패하였습니다. 다시 시도해 주세요.");
+                throw new \Exception("회원가입에 실패하였습니다. 다시 시도해 주세요.");
             }
 
         } catch (\Exception $e) {
@@ -56,6 +51,10 @@ class JoinController extends Controller
                 'target' => '/join/signup'
             ]);
         }
+
+        \Session::flash('success', '회원가입에 성공하셨습니다.');
+
+        \Session::delete('old');
 
         redirect(APP_URL);
     }

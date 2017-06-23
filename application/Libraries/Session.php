@@ -53,7 +53,7 @@ class Session
      * @param  string $value [Value]
      * @return string
      */
-    public static function flash($key, $value)
+    public static function flash($key, $value = '')
     {
         if (self::exists($key)) {
             $session = self::get($key);
@@ -61,7 +61,7 @@ class Session
 
             return $session;
         } else {
-            self::put($key, $value);
+            self::set($key, $value);
         }
     }
 }

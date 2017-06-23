@@ -12,3 +12,5 @@
         <div class="container">
 
             <?php echo view('layout/navbar.php'); ?>
+
+            <?php echo view('layout/message.php'); ?>

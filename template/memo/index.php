@@ -12,7 +12,7 @@
 
         <div class="memo_item">
             <a href="/memo/view?search_word=<?= $request['search_word'] ?>&id=<?= $memo['id'] ?>" class="memo_inner">
-                <p class="memo_contents"><?= $memo['memo'] ?></p>
+                <p class="memo_contents"><?= preg_replace('/\r\n|\r|\n/', '' , $memo['memo']) ?></p>
                 <p class="memo_writer" style="text-align: center;"><?= $memo['user_email'] ?></p>
             </a>
         </div>

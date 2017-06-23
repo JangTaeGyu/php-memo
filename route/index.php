@@ -2,7 +2,9 @@
 
 $app = new \Route;
 
-$app->get('/', 'MainController@index');
+$app->get('/', 'MemoController@index');
+$app->get('/memo/create', 'MemoController@create');
+$app->get('/memo/view', 'MemoController@view');
 
 $app->get('/auth/login', 'AuthController@login');
 $app->post('/auth/login/process', 'AuthController@loginProcess');

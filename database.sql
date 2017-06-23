@@ -36,3 +36,13 @@ CREATE TABLE `sessions` (
   `date` timestamp NULL DEFAULT NULL COMMENT '작성일자',
   PRIMARY KEY (`session_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+# 메모정보
+CREATE TABLE `memos` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned NOT NULL,
+  `memo` text NOT NULL COMMENT '메모',
+  `created_at` timestamp NULL DEFAULT NULL COMMENT '작성일자',
+  `updated_at` timestamp NULL DEFAULT NULL COMMENT '수정일자',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='메모정보';

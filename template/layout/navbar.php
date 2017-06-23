@@ -7,6 +7,7 @@
 
     <?php if (isLogin()): ?>
 
+        <li class="navbar_item"><a href="/memo/create">메모 작성하기</a></li>
         <li class="navbar_item"><a href="/auth/logout">로그아웃</a></li>
 
     <?php else: ?>

@@ -37,6 +37,23 @@ function view($template = '', array $data = [])
 }
 
 /**
+ * Json 형식 노출
+ * @param  array  $data    [Data]
+ * @param  string $charset [Charset]
+ * @return string
+ */
+function json(array $data = [], $charset = 'UTF-8')
+{
+    header("Content-type: application/json; charset={$charset}");
+
+    ob_start();
+
+    echo json_encode($data);
+
+    return ob_get_clean();
+}
+
+/**
  * Redirect
  * @param  string $target [Target]
  * @return void

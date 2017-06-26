@@ -226,9 +226,21 @@ a {
 }
 
 .memo_writer {
+    position: relative;
     padding: 7px;
     margin: 0px;
     background: #616161;
     color: #fff;
     font-size: 12px;
+    text-align: center;
+}
+
+.memo_remove {
+    position: absolute;
+    padding: 7px;
+    margin: 0px;
+    background: #d9534f;
+    color: #fff;
+    right: 0;
+    top: 0;
 }

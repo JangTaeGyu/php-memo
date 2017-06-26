@@ -11,5 +11,12 @@
                 }
             });
         </script>
+
+        <?php if (isset($javascript)): ?>
+            <?php foreach ($javascript as $link): ?>
+                <script type="text/javascript" src="<?= $link ?>"></script>
+            <?php endforeach; ?>
+        <?php endif; ?>
+
     </body>
 </html>

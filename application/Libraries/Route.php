@@ -31,7 +31,7 @@ class Route
         }
 
         $GLOBALS['routes'][$method][$url] = [
-            'controller' => $controller, 'call' => $call, 'auth' => isset($auth) ? true : false
+            'controller' => $controller, 'call' => $call, 'auth' => isset($auth) ? $auth : null
         ];
     }
 
@@ -51,12 +51,19 @@ class Route
                 $object = new $controller;
 
                 if (method_exists($object, $call)) {
-                    if ($auth) {
-                        if (! isLogin()) {
-                            echo view('javascript/alertAfterTarget.php', [
-                                'message' => '로그인 후 접근이 가능 합니다.',
-                                'target' => '/auth/login'
-                            ]);
+                    if (is_null($auth)) {
+                    } else {
+                        if ($auth !== isLogin()) {
+
+                            $messages = \Loader::languages('ko/auth');
+
+                            if (isLogin()) {
+                                $params = ['message' => $messages['auth_fail'], 'target' => APP_URL];
+                            } else {
+                                $params = ['message' => $messages['auth_success'], 'target' => '/auth/login'];
+                            }
+
+                            echo view('javascript/alertAfterTarget.php', $params);
                             die;
                         }
                     }
